@@ -1,0 +1,7 @@
+
+
+class Sidebar{
+  constructor(){
+    
+  }
+}
