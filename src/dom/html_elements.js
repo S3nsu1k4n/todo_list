@@ -33,3 +33,9 @@ export class Aside extends BasicElement{
     super('aside', text);
   }
 }
+
+export class P extends BasicElement{
+  constructor(text=''){
+    super('p', text);
+  }
+}

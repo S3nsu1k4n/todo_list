@@ -8,4 +8,3 @@ class Task{
     this.is_finished = false;
   }
 }
-

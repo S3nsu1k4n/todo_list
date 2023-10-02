@@ -1,3 +1,25 @@
 body{
   background-color: lightblue;
 }
+
+nav{
+  border: solid 2px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.content-area{
+  display: flex;
+}
+
+.content-area div{
+  flex: 5; 
+}
+
+aside{
+  flex: 1;
+  border: solid 2px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-around;
+}
