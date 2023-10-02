@@ -26,6 +26,9 @@ export class Button extends BasicElement{
   constructor(text=''){
     super('button', text);
   }
+  on_click = func => {
+    this.element.addEventListener('click', func);
+  }
 }
 
 export class Aside extends BasicElement{
