@@ -1,6 +1,10 @@
 import "./style.css";
-import { Nav, Content, Sidebar } from "./dom/";
+import { Nav, Content, Sidebar, Body, ProjectDialog } from "./dom/";
 import { Project } from './project.js';
+
+const body = new Body();
+const project_dialog = new ProjectDialog();
+body.add(project_dialog);
 
 let current_project = new Project('Default Project');
 const nav = new Nav();

@@ -1,4 +1,11 @@
-
+export class Body{
+  constructor(){
+    this.element = document.querySelector('body');
+  }
+  add = node => {
+    this.element.appendChild(node.element)
+  };
+}
 class BasicElement{
   constructor(tag, text=''){
     this.element = document.createElement(tag);
@@ -6,6 +13,7 @@ class BasicElement{
     this.init();
   }
   set_text = text => this.element.innerText = text;
+  add_class = class_name => this.element.classList.add(class_name);
   init = () => {
     this.set_text(this.text);
   }
@@ -40,5 +48,11 @@ export class Aside extends BasicElement{
 export class P extends BasicElement{
   constructor(text=''){
     super('p', text);
+  }
+}
+
+export class Dialog extends BasicElement{
+  constructor(text=''){
+    super('dialog', text)
   }
 }
