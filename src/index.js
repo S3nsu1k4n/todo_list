@@ -18,8 +18,9 @@ const new_task = (e) => {
   console.log(111);
 }
 
-nav.button_new_task.on_click(new_task);
-
-const new_projecct = () => {
-
+const new_project = e => {
+  project_dialog.toggleModal();
 }
+
+nav.button_new_task.on_click(new_task);
+sidebar.button_new_project.on_click(new_project);

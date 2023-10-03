@@ -1,9 +1,8 @@
 import { Dialog, P, Button } from './html_elements.js'
 
-export class ProjectDialog{
+export class ProjectDialog extends Dialog{
   constructor(){
-    this.dialog = new Dialog();
-    this.dialog.add_class('project_dialog');
-    this.element = this.dialog.element;
+    super()
+    this.add_class('project_dialog');
   }
 }
