@@ -1,4 +1,5 @@
 import "./style.css";
+import "./project_dialog.css";
 import { Nav, Content, Sidebar, Body, ProjectDialog } from "./dom/";
 import { Project } from './project.js';
 
@@ -15,12 +16,18 @@ nav.change_project_name(current_project.title);
 sidebar.add_project(current_project);
 
 const new_task = (e) => {
-  console.log(111);
+  console.log(1111);
 }
 
-const new_project = e => {
-  project_dialog.toggleModal();
-}
 
 nav.button_new_task.on_click(new_task);
-sidebar.button_new_project.on_click(new_project);
+
+project_dialog.form_button().on_click(event => {
+  event.preventDefault();
+  sidebar.add_project(new Project(project_dialog.input_value));
+  project_dialog.toggleModal();
+});
+
+sidebar.button_new_project.on_click(event => {
+  project_dialog.toggleModal();
+});

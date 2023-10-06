@@ -6,7 +6,7 @@ export class Body{
     this.element.appendChild(node.element)
   };
 }
-class BasicElement{
+export class BasicElement{
   constructor(tag, text=''){
     this.element = document.createElement(tag);
     this.text = text;
@@ -14,6 +14,9 @@ class BasicElement{
   }
   set_text = text => this.element.innerText = text;
   add_class = class_name => this.element.classList.add(class_name);
+  add_node = node => this.element.appendChild(node.element);
+  on_click = func => this.element.addEventListener('click', func);
+  
   init = () => {
     this.set_text(this.text);
   }
@@ -34,9 +37,6 @@ export class Button extends BasicElement{
   constructor(text=''){
     super('button', text);
   }
-  on_click = func => {
-    this.element.addEventListener('click', func);
-  }
 }
 
 export class Aside extends BasicElement{
@@ -48,6 +48,12 @@ export class Aside extends BasicElement{
 export class P extends BasicElement{
   constructor(text=''){
     super('p', text);
+  }
+}
+
+export class Div extends BasicElement{
+  constructor(text=''){
+    super('div', text);
   }
 }
 
@@ -73,7 +79,7 @@ export class Dialog extends BasicElement{
   close = () => {
     if(!this.hidden){
       this.element.close();
-      this.hidden = false;
+      this.hidden = true;
     }
   }
 }
