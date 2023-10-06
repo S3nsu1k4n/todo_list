@@ -5,6 +5,7 @@ import { Nav, Content, Sidebar, Body, ProjectDialog } from "./dom/";
 import { Project } from './project.js';
 import { TaskDialog } from "./dom/task_dialog";
 import { Task } from "./task";
+import { TaskEntry } from "./dom/task_entry";
 
 const body = new Body();
 const project_dialog = new ProjectDialog();
@@ -20,10 +21,22 @@ const nav = new Nav();
 const sidebar = new Sidebar();
 const content = new Content();
 
+const update_content_area = () => {
+  content.reset();
+  for (const [title, task] of Object.entries(current_project.tasks)){
+    content.add_node(new TaskEntry(task.title, task.description, task.deadline, task.priority));
+  }
+  //content.add_node(new TaskEntry(1, 1, 1, 1));
+}
+update_content_area();
+
 const change_project = event => {
   nav.change_project_name(event.target.innerText);
   current_project = projects[event.target.innerText];
+  update_content_area();
 }
+
+
 
 nav.change_project_name(current_project.title);
 sidebar.add_project(current_project, change_project);
@@ -58,8 +71,6 @@ task_dialog.form_button().on_click(event => {
 
   const task = new Task(task_dialog.title, task_dialog.description, task_dialog.deadline, task_dialog.priority);
   current_project.add_task(task);
-  console.log(current_project.tasks);
-  console.log(current_project.tasks);
-
+  update_content_area();
   task_dialog.toggleModal();
 });
