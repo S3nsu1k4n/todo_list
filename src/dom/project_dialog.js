@@ -1,4 +1,4 @@
-import { Dialog, P, Button, Div } from './html_elements.js'
+import { Dialog, P, Div } from './html_elements.js'
 import { Form } from './form.js';
 
 export class ProjectDialog extends Dialog{

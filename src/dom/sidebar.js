@@ -13,7 +13,9 @@ export class Sidebar{
     this.add(this.button_new_project);
   }
 
-  add_project = project => {
-    this.add(new Button(project.title));
+  add_project = (project, func) => {
+    const button = new Button(project.title);
+    button.on_click(func);
+    this.add(button);
   }
 }

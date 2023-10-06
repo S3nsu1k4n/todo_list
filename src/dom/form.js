@@ -6,6 +6,7 @@ export class Form extends BasicElement {
   }
   add_label = name => this.add_node(new Label(name));
   add_input = (name, type='text', placeholder='') => this.add_node(new Input(name, type, placeholder));
+  add_text_area = (name, placeholder='Enter text here...', rows=4, cols=50) => this.add_node(new Textarea(name, placeholder, rows, cols));
   add_button = name => {
     this.button = new Button(name);
     this.add_node(this.button);
@@ -37,4 +38,20 @@ export class Input extends BasicElement {
   required = () => this.element.setAttribute("required", "required");
   max_length = length => this.element.setAttribute('maxlength', length);
   value = () => this.element.value;
+}
+
+export class Textarea extends BasicElement {
+  constructor(name, placeholder, rows, cols){
+    super('textarea');
+    this.id(name.toLowerCase());
+    this.name(name.toLowerCase());
+    this.placeholder(placeholder);
+    this.rows(rows);
+    this.cols(cols);
+  }
+  id = name => this.element.id = name;
+  name = identifier => this.element.setAttribute('name', identifier);
+  placeholder = text => this.element.setAttribute('placeholder', text);
+  rows = value => this.element.setAttribute('rows', value);
+  cols = value => this.element.setAttribute('cols', value);
 }
