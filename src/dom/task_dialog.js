@@ -1,5 +1,5 @@
 import { Dialog, P, Div } from './html_elements.js'
-import { Form } from './form.js';
+import { Form, InputType } from './form.js';
 
 export class TaskDialog extends Dialog {
   constructor(){
@@ -15,7 +15,7 @@ export class TaskDialog extends Dialog {
     this.priority_input;
 
     this.init();
-  }
+  } 
 
   init = () => {
     this.div.add_class('task_dialog_div')
@@ -28,10 +28,10 @@ export class TaskDialog extends Dialog {
     this.description_input = this.form.add_text_area('Description');
     
     this.form.add_label('Deadline');
-    this.deadline_input = this.form.add_input('Dealine', undefined, 'deadline');
+    this.deadline_input = this.form.add_input('Dealine', InputType.date, 'deadline');
     
     this.form.add_label('Priority');
-    this.priority_input = this.form.add_input('priority', undefined, 'priority');
+    this.priority_input = this.form.add_input('priority', InputType.number, 'priority');
 
     this.form.add_button('Add');
 

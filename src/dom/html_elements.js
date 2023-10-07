@@ -36,6 +36,7 @@ export class H2 extends BasicElement{
 export class Button extends BasicElement{
   constructor(text=''){
     super('button', text);
+    this.element.setAttribute("type", "submit");
   }
 }
 
