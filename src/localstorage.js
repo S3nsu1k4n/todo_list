@@ -9,6 +9,8 @@ export class LocalStorage{
 
   remove = key => localStorage.removeItem(key);
 
+  get length(){ return localStorage.length }
+
   print = () => console.log(localStorage);
 
   storageAvailable = type => {

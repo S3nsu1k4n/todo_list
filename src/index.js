@@ -7,7 +7,6 @@ import { TaskEntry } from "./dom/task_entry";
 import { LocalStorage } from "./localstorage";
 
 const storage = new LocalStorage();
-storage.print();
 
 const body = new Body();
 const project_dialog = new ProjectDialog();
@@ -16,7 +15,7 @@ body.add(project_dialog);
 body.add(task_dialog);
 
 let projects = {};
-if (storage.available){
+if (storage.available && storage.length > 0){
   projects = storage.get_projects();
 }
 else {
@@ -34,7 +33,6 @@ const update_content_area = () => {
   for (const [title, task] of Object.entries(current_project.tasks)){
     content.add_node(new TaskEntry(task.title, task.description, task.deadline, task.priority));
   }
-  //content.add_node(new TaskEntry(1, 1, 1, 1));
 }
 update_content_area();
 
@@ -47,7 +45,6 @@ const change_project = event => {
 
 const init_sidebar_projects = () => {
   for (const project of Object.keys(projects)){
-    console.log(project)
     sidebar.add_project(project, change_project);
   }
 }
