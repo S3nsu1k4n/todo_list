@@ -7,16 +7,24 @@ import { TaskEntry } from "./dom/task_entry";
 import { LocalStorage } from "./localstorage";
 
 const storage = new LocalStorage();
-
 const body = new Body();
 const project_dialog = new ProjectDialog();
 const task_dialog = new TaskDialog();
 body.add(project_dialog);
 body.add(task_dialog);
 
+const json_to_projects = data => {
+  for (const [k, v] of Object.entries(data)){
+    data[k] = new Project(k);
+    data[k].add_many_tasks(v.tasks);
+
+  }
+  return data;
+}
+
 let projects = {};
 if (storage.available && storage.length > 0){
-  projects = storage.get_projects();
+  projects = json_to_projects(storage.get_projects());
 }
 else {
   projects = {'Default Project': new Project('Default Project')};
@@ -82,10 +90,10 @@ task_dialog.form_button().on_click(event => {
     alert(`Task "${task_dialog.title}" already exists!`);
     return
   };
-
   const task = new Task(task_dialog.title, task_dialog.description, task_dialog.deadline, task_dialog.priority);
   current_project.add_task(task);
   update_content_area();
   task_dialog.toggleModal();
+  projects[current_project.title] = current_project;
   storage.save_projects(projects);
 });
