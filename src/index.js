@@ -1,6 +1,4 @@
-import "./css/style.css";
-import "./css/project_dialog.css";
-import "./css/task_dialog.css";
+import './css'
 import { Nav, Content, Sidebar, Body, ProjectDialog } from "./dom/";
 import { Project } from './project.js';
 import { TaskDialog } from "./dom/task_dialog";
